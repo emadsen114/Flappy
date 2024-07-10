@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PipeSpawnScript : MonoBehaviour
+public class PipeSpawnerScript : MonoBehaviour
 {
+
     public GameObject pipe;
     public float spawnRate = 2;
     private float timer = 0;
@@ -17,8 +18,10 @@ public class PipeSpawnScript : MonoBehaviour
     void Update()
     {
         if(timer < spawnRate){
-            timer = timer + Time.deltaTime;
+            timer+= Time.deltaTime;
+        } else {
+            Instantiate(pipe, transform.position, transform.rotation);
+            timer = 0;
         }
-        Instantiate(pipe,transform.position, transform.rotation);
     }
 }
